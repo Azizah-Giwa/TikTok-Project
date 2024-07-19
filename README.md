@@ -34,6 +34,8 @@ As a new data analyst, I will be working closely with a talented team of experie
 **Workflow Structure**
 
 I will be using the PACE workflow framework throughout this project in order to provide a clear foundation and structure for this data analysis project. PACE is an acronym and each one of the letters represents an actionable stage in a project: plan, analyse, construct, and execute.
+
+![PACE workflow image](assets/PACE_workflow.png)
  
 **Plan Stage**: First, I need to ask and answer some relevant questions for this project. These include: 
 -	Who is my audience for this project? The answer to this question is necessary as it would help me identify my stakeholders for the project. My audience for this project includes my data team members, the cross-functional team members, the TikTok users who may report a claim or opinion, and the moderators who review the videos.
