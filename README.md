@@ -2,7 +2,7 @@
 
 ## TikTok Machine Learning Model Project
 
-![TikTok Project](assets/TikTok Image.jpg)
+![TikTok Project](assets/TikTok_Image.jpg)
  
 **Note**: _This project is created in partnership between Google Advanced Data Analytics Professional Certificate and the short-form video hosting company, TikTok. The story, all names, characters, and incidents portrayed in this project are fictitious. No identification with actual persons (living or deceased) is intended or should be inferred. And the data shared in this project has been created for pedagogical purposes._
 
