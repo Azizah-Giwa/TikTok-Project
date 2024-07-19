@@ -67,4 +67,4 @@ I will be using the PACE workflow framework throughout this project in order to 
  	-	Stakeholder reports
  	-	Visualizations e.g. dashboard
 	
-
+ [Link to Project Proposal Doc](TikTok_project_proposal.pdf)
