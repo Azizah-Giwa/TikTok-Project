@@ -9,7 +9,7 @@
 TikTok users have the ability to report videos and comments that contain user claims. These reports identify content that needs to be reviewed by moderators. This process generates a large number of user reports that are difficult to address quickly.
 TikTok is working on the development of a predictive model that can determine whether a video contains a claim or offers an opinion. With a successful prediction model, TikTok can reduce the backlog of user reports and prioritize them more efficiently.
 
-### **Scenario 1**
+## **Scenario 1**
 
 As a data analyst on TikTok's data team, with new considerations from the leadership team, my responsibility is to create a project proposal by assigning the required data analytical tasks into realistic milestones that will advise future steps in the claims classification project.
 For my first assignment, I will be providing TikTok with a project proposal that will create milestones for the tasks within the comment classification project.
@@ -20,14 +20,14 @@ As a new data analyst, I will be working closely with a talented team of experie
 
 **Data team roles**
 
-•	Willow Jaffey- Data Science Lead
-•	Rosie Mae Bradshaw- Data Science Manager
-•	Orion Rainier- Data Scientist
+-	Willow Jaffey- Data Science Lead
+-	Rosie Mae Bradshaw- Data Science Manager
+-	Orion Rainier- Data Scientist
 
 **Cross-functional team members**
-•	Mary Joanna Rodgers- Project Management Officer
-•	Margery Adebowale- Finance Lead, Americas
-•	Maika Abadi- Operations Lead
+-	Mary Joanna Rodgers- Project Management Officer
+-	Margery Adebowale- Finance Lead, Americas
+-	Maika Abadi- Operations Lead
 
 **Workflow Structure**
 
