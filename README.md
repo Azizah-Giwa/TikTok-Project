@@ -21,7 +21,6 @@ For my first assignment, I will be providing TikTok with a project proposal that
 As a new data analyst, I will be working closely with a talented team of experienced data professionals. I’ll also collaborate with TikTok co-workers outside the data team as the project requires.
 
 **Data team roles**
-
 -	Willow Jaffey - Data Science Lead
 -	Rosie Mae Bradshaw - Data Science Manager
 -	Orion Rainier - Data Scientist
