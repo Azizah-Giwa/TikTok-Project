@@ -160,10 +160,39 @@ I will continue investigating engagement levels, now focusing on author_ban_stat
 
 ![TikTok Project](assets/output_9.png)
 
-Banned authors have a median share count that's 33 times the median share count of active authors! Explore this in more depth.
+![TikTok Project](assets/median_video_share2.png)
 
-Use groupby() to group the data by author_ban_status, then use agg() to get the count, mean, and median of each of the following columns:
+![TikTok Project](assets/output_10.png)
 
-video_view_count
-video_like_count
-video_share_count
+Banned authors have a median share count that's 33 times the median share count of active authors! I will explore this in more depth by using groupby() to group the data by author_ban_status, then use agg() to get the count, mean, and median of each of the following columns:
+
+- video_view_count
+- video_like_count
+- video_share_count
+
+![TikTok Project](assets/agg.png)
+
+![TikTok Project](assets/output_11.png)
+
+A few observations stand out:
+
+- Banned authors and those under review get far more views, likes, and shares than active authors.
+- In most groups, the mean is much greater than the median, which indicates that there are some videos with very high engagement counts.
+
+Now, I will create three new columns to help better understand engagement rates:
+
+- _likes_per_view_: represents the number of likes divided by the number of views for each video
+- _comments_per_view_: represents the number of comments divided by the number of views for each video
+- _shares_per_view_: represents the number of shares divided by the number of views for each video
+
+![TikTok Project](assets/likes_per_view.png)
+
+I will use groupby() to compile the information in each of the three newly created columns for each combination of categories of claim status and author ban status, then use agg() to calculate the count, the mean, and the median of each group.
+
+![TikTok Project](assets/count_mean_median.png)
+
+![TikTok Project](assets/output_12.png)
+
+I know that videos by banned authors and those under review tend to get far more views, likes, and shares than videos by non-banned authors. However, when a video does get viewed, its engagement rate is less related to author ban status and more related to its claim status. Also, I know that claim videos have a higher view rate than opinion videos, but this tells me that claim videos also have a higher rate of likes on average, so they are more favorably received as well. Furthermore, they receive more engagement via comments and shares than opinion videos.
+
+Note that for claim videos, banned authors have slightly higher likes/view and shares/view rates than active authors or those under review. However, for opinion videos, active authors and those under review both get higher engagement rates than banned authors in all categories.
