@@ -75,6 +75,7 @@ Part 1: This involves me trying to understand the situation – I will begin by 
 Part 2: This involves me trying to understand the data. Here I will:
 - create a pandas dataframe for data learning, future exploratory data analysis (EDA), and statistical activities.
 - compile summary information about the data to inform next steps.
+
 Part 3: This involves me trying to understand the variables. Here I will:
 - use insights from my examination of the summary data to guide deeper investigation into variables.
 
