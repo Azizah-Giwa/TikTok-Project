@@ -84,5 +84,15 @@ Part 3: This involves me trying to understand the variables. Here I will:
 
 I’m starting by importing the packages that I will need.
 
+![TikTok Project](assets/import_code.png)
 
+Then, loading the dataset into a dataframe. Creating a dataframe will help me conduct data manipulation, exploratory data analysis (EDA), and statistical activities.
+
+![TikTok Project](assets/loading_package.png)
+
+Now, I will view and inspect summary information about the dataframe.
+
+![TikTok Project](assets/display_data_head.png)
+
+![TikTok Project](assets/output_1.png)
 
