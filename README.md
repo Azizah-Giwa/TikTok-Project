@@ -81,6 +81,8 @@ Part 3: This involves me trying to understand the variables. Here I will:
 - use insights from my examination of the summary data to guide deeper investigation into variables.
 
 **Imports and data loading**
+
 I’m starting by importing the packages that I will need.
+
 
 
