@@ -12,7 +12,7 @@ TikTok users have the ability to report videos and comments that contain user cl
 TikTok is working on the development of a predictive model that can determine whether a video contains a claim or offers an opinion. With a successful prediction model, TikTok can reduce the backlog of user reports and prioritize them more efficiently.
 
 ## **Scenario 1**
-
+## **Step 1 - Project Proposal**
 As a data analyst on TikTok's data team, with new considerations from the leadership team, my responsibility is to create a project proposal by assigning the required data analytical tasks into realistic milestones that will advise future steps in the claims classification project.
 For my first assignment, I will be providing TikTok with a project proposal that will create milestones for the tasks within the comment classification project.
 
@@ -67,3 +67,18 @@ I will be using the PACE workflow framework throughout this project in order to 
  	-	Visualizations e.g. dashboard
 	
  [Link to Project Proposal Doc](TikTok_project_proposal.pdf)
+
+## **Step 2 - Data Cleaning and Organisation**
+I have received notice that the project proposal submitted by the team has been approved and we have been given access to TikTok’s user data. To get clear insights, the data must be inspected, organised, and prepared to begin the process of exploratory data analysis (EDA). I will be using Python programming language for this step and all my codes will be written and executed in a Jupyter Notebook. The goal is for me to construct a dataframe in Python, perform a cursory inspection of the provided dataset, and inform the TikTok data team members of my findings. I will split this into 3 parts:
+
+	Part 1: This involves me trying to understand the situation – I will begin by exploring the dataset and reviewing the Data Dictionary.
+	Part 2: This involves me trying to understand the data. Here I will:
+- create a pandas dataframe for data learning, future exploratory data analysis (EDA), and statistical activities.
+- compile summary information about the data to inform next steps.
+	Part 3: This involves me trying to understand the variables. Here I will:
+- use insights from my examination of the summary data to guide deeper investigation into variables.
+
+**Imports and data loading**
+I’m starting by importing the packages that I will need.
+
+
