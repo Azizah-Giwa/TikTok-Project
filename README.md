@@ -96,3 +96,16 @@ Now, I will view and inspect summary information about the dataframe.
 
 ![TikTok Project](assets/output_1.png)
 
+The dataframe contains a collection of categorical, text, and numerical data. Each row represents a distinct TikTok video that presents either a claim or an opinion and the accompanying metadata about that video.
+
+![TikTok Project](assets/info.png)
+
+![TikTok Project](assets/output_2.png)
+
+The dataframe contains five float64s, three int64s, and four objects. There are 19,382 observations, but some of the variables are missing values, including claim status, the video transcripton, and all of the count variables.
+
+![TikTok Project](assets/describe.png)
+
+![TikTok Project](assets/output_3.png)
+
+Many of the count variables seem to have outliers at the high end of the distribution. They have very large standard deviations and maximum values that are very high compared to their quartile values.
