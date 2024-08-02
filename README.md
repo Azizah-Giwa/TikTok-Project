@@ -109,3 +109,36 @@ The dataframe contains five float64s, three int64s, and four objects. There are 
 ![TikTok Project](assets/output_3.png)
 
 Many of the count variables seem to have outliers at the high end of the distribution. They have very large standard deviations and maximum values that are very high compared to their quartile values.
+
+**Understanding the data - Investigating the variables**
+
+In this phase, I will begin to investigate the variables more closely to better understand them.
+
+I know from the project proposal that the ultimate objective is to use machine learning to classify videos as either claims or opinions. The first step towards understanding the data might therefore be to examine the claim_status variable. I will begin by determining how many videos there are for each different claim status.
+
+Note: A claim refers to information that is either unsourced or from an unverified source. For example, “The news reported that someone revealed that around 50% of the mined gold on Earth comes from one source.”
+Opinions refer to the personal beliefs or thoughts of a group or an individual. Here’s an example, “In my opinion the most productive workday of the week is Tuesday.”
+
+![TikTok Project](assets/claim_status.png)
+
+![TikTok Project](assets/output_4.png)
+
+The counts of each claim status are quite balanced.
+
+![TikTok Project](assets/mean_and_median.png)
+
+![TikTok Project](assets/output_5.png)
+
+Next, I will examine the engagement trends associated with each different claim status. I will start by using Boolean masking to filter the data according to claim status, then calculate the mean and median view counts for each claim status.
+
+![TikTok Project](assets/median_view_counts.png)
+
+![TikTok Project](assets/output_6.png)
+
+![TikTok Project](assets/average_view_count.png)
+
+![TikTok Project](assets/output_7.png)
+
+The mean and the median within each claim category are close to one another, but there is a vast discrepancy between view counts for videos labeled as claims and videos labeled as opinions.
+
+Next, I will examine trends associated with the ban status of the author. I will use groupby() to calculate how many videos there are for each combination of categories of claim status and author ban status.
