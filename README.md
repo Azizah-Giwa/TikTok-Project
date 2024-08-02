@@ -142,3 +142,28 @@ Next, I will examine the engagement trends associated with each different claim 
 The mean and the median within each claim category are close to one another, but there is a vast discrepancy between view counts for videos labeled as claims and videos labeled as opinions.
 
 Next, I will examine trends associated with the ban status of the author. I will use groupby() to calculate how many videos there are for each combination of categories of claim status and author ban status.
+
+![TikTok Project](assets/group_by.png)
+
+![TikTok Project](assets/output_8.png)
+
+There are many more claim videos with banned authors than there are opinion videos with banned authors. This could mean a number of things, including the possibilities that:
+
+- Claim videos are more strictly policed than opinion videos
+- Authors must comply with a stricter set of rules if they post a claim than if they post an opinion
+  
+Also, it should be noted that there's no way of knowing if claim videos are inherently more likely than opinion videos to result in author bans, or if authors who post claim videos are more likely to post videos that violate terms of service. Finally, while we can use this data to draw conclusions about banned/active authors, we cannot draw conclusions about banned videos. There's no way of determining whether a particular video caused the ban, and banned authors could have posted videos that complied with the terms of service.
+
+I will continue investigating engagement levels, now focusing on author_ban_status. I will calculate the median video share count of each author ban status.
+
+![TikTok Project](assets/median_video_share.png)
+
+![TikTok Project](assets/output_9.png)
+
+Banned authors have a median share count that's 33 times the median share count of active authors! Explore this in more depth.
+
+Use groupby() to group the data by author_ban_status, then use agg() to get the count, mean, and median of each of the following columns:
+
+video_view_count
+video_like_count
+video_share_count
