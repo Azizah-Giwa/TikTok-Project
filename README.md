@@ -203,4 +203,4 @@ Following the initial data analysis, I have summarised the key insights from the
 
 I have also attached a link to the official executive summary presented to the Tiktok leadership team.
 
-[Link to Executive Summary Presentation](Executive_Summary.pptx)
+[Link to Executive Summary Presentation](Executive_Summary.pdf)
