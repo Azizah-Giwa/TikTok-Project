@@ -200,3 +200,7 @@ Following the initial data analysis, I have summarised the key insights from the
 - Of the 19,382 samples in this dataset, just under 50% are claims—9,608 of them.
 - Engagement level is strongly correlated with claim status. This should be a focus of further inquiry.
 - Videos with banned authors have significantly higher engagement than videos with active authors. Videos with authors under review fall between these two categories in terms of engagement levels.
+
+I have also attached a link to the official executive summary presented to the Tiktok leadership team.
+
+[Link to Executive Summary Presentation](Executive_Summary.pptx)
