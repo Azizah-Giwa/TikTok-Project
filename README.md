@@ -90,6 +90,8 @@ Then, loading the dataset into a dataframe. Creating a dataframe will help me co
 
 ![TikTok Project](assets/loading_package.png)
 
+**Understanding the data - Inspecting the data**
+
 Now, I will view and inspect summary information about the dataframe.
 
 ![TikTok Project](assets/display_data_head.png)
@@ -125,10 +127,6 @@ Opinions refer to the personal beliefs or thoughts of a group or an individual. 
 
 The counts of each claim status are quite balanced.
 
-![TikTok Project](assets/mean_and_median.png)
-
-![TikTok Project](assets/output_5.png)
-
 Next, I will examine the engagement trends associated with each different claim status. I will start by using Boolean masking to filter the data according to claim status, then calculate the mean and median view counts for each claim status.
 
 ![TikTok Project](assets/median_view_counts.png)
@@ -152,7 +150,7 @@ There are many more claim videos with banned authors than there are opinion vide
 - Claim videos are more strictly policed than opinion videos
 - Authors must comply with a stricter set of rules if they post a claim than if they post an opinion
   
-Also, it should be noted that there's no way of knowing if claim videos are inherently more likely than opinion videos to result in author bans, or if authors who post claim videos are more likely to post videos that violate terms of service. Finally, while we can use this data to draw conclusions about banned/active authors, we cannot draw conclusions about banned videos. There's no way of determining whether a particular video caused the ban, and banned authors could have posted videos that complied with the terms of service.
+Also, it should be noted that there's no way of knowing if claim videos are inherently more likely than opinion videos to result in author bans, or if authors who post claim videos are more likely to post videos that violate terms of service. Finally, while I can use this data to draw conclusions about banned/active authors, I cannot draw conclusions about banned videos. There's no way of determining whether a particular video caused the ban, and banned authors could have posted videos that complied with the terms of service.
 
 I will continue investigating engagement levels, now focusing on author_ban_status. I will calculate the median video share count of each author ban status.
 
@@ -196,3 +194,9 @@ I will use groupby() to compile the information in each of the three newly creat
 I know that videos by banned authors and those under review tend to get far more views, likes, and shares than videos by non-banned authors. However, when a video does get viewed, its engagement rate is less related to author ban status and more related to its claim status. Also, I know that claim videos have a higher view rate than opinion videos, but this tells me that claim videos also have a higher rate of likes on average, so they are more favorably received as well. Furthermore, they receive more engagement via comments and shares than opinion videos.
 
 Note that for claim videos, banned authors have slightly higher likes/view and shares/view rates than active authors or those under review. However, for opinion videos, active authors and those under review both get higher engagement rates than banned authors in all categories.
+
+Following the initial data analysis, I have summarised the key insights from the dataset as follows:
+
+- Of the 19,382 samples in this dataset, just under 50% are claims—9,608 of them.
+- Engagement level is strongly correlated with claim status. This should be a focus of further inquiry.
+- Videos with banned authors have significantly higher engagement than videos with active authors. Videos with authors under review fall between these two categories in terms of engagement levels.
