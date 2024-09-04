@@ -205,8 +205,62 @@ To effectively communicate my findings to my teammates and the Tiktok leadership
 
 [Link to Executive Summary Presentation](Executive_Summary.pdf)
 
-## **Step 3 - Data Cleaning and Organisation**
+## **Step 3 - Exploratory Data Analysis and Data Visualisation**
 
+It is now time to begin the exploratory data analysis (EDA) process. As a data analyst on TikTok's data team, I'll be conducting EDA for the claims classification project. I'll use Python's matplotlib and seaborn libraries to help identify outliers. To create a more polished presentation, I'll use Tableau to design visuals for an executive summary that will help non-technical stakeholders engage with and understand the data. Additionally, I will provide an executive summary of my analysis for the broader data team.
 
+**Imports, links, and loading**
 
+![TikTok Project](assets/input_1.png)
 
+![TikTok Project](assets/input_2.png)
+
+**Data exploration and cleaning**
+
+I will start by discovering, using .head(), .size, and .shape.
+
+![TikTok Project](assets/input_3.png)
+
+![TikTok Project](assets/put_3.png)
+
+![TikTok Project](assets/input_4.png)
+
+![TikTok Project](assets/put_4.png)
+
+![TikTok Project](assets/input_5.png)
+
+![TikTok Project](assets/put_5.png)
+
+Then, I will proceed to get basic information about the dataset, using .info()
+
+![TikTok Project](assets/input_6.png)
+
+![TikTok Project](assets/put_6.png)
+
+I will also generate a table of descriptive statistics, using .describe().
+
+![TikTok Project](assets/input_7.png)
+
+![TikTok Project](assets/put_7.png)
+
+**Data Visualisation**
+
+Next, I will move on to visualising the distribution of the data. The visualisations most helpful for considering the distribution of the data include box plots and histograms. Visualising the distribution of the data will help inform the next steps and considerations in the data analysis. For example, data distribution will inform which types of modeling is needed.
+
+I will create a box plot to examine the spread of values in the 'video_duration_sec' column.
+
+![TikTok Project](assets/input_8.png)
+
+![TikTok Project](assets/put_8.png)
+
+I will create a histogram of the values in the video_duration_sec column to further explore the distribution of this variable.
+
+![TikTok Project](assets/input_9.png)
+
+![TikTok Project](assets/put_9.png)
+
+I will create a box plot to examine the spread of values in the video_view_count column.
+
+![TikTok Project](assets/input.png)
+
+![TikTok Project](assets/output.png)
