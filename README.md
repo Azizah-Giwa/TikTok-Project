@@ -253,14 +253,81 @@ I will create a box plot to examine the spread of values in the 'video_duration_
 
 ![TikTok Project](assets/put_8.png)
 
-I will create a histogram of the values in the video_duration_sec column to further explore the distribution of this variable.
+I will also create a histogram of the values in the 'video_duration_sec' column to further explore the distribution of this variable.
 
 ![TikTok Project](assets/input_9.png)
 
 ![TikTok Project](assets/put_9.png)
 
-I will create a box plot to examine the spread of values in the video_view_count column.
+All videos are 5-60 seconds in length, and the distribution is uniform.
 
-![TikTok Project](assets/input.png)
+I will create a box plot to examine the spread of values in the 'video_view_count' column.
 
-![TikTok Project](assets/output.png)
+![TikTok Project](assets/input_10.png)
+
+![TikTok Project](assets/put_10.png)
+
+I will also create a histogram of the values in the 'video_view_count' column to further explore the distribution of this variable.
+
+![TikTok Project](assets/input_11.png)
+
+![TikTok Project](assets/put_11.png)
+
+This variable has a very uneven distribution, with more than half the videos receiving fewer than 100,000 views. Distribution of view counts > 100,000 views is uniform.
+
+I will create a box plot to examine the spread of values in the 'video_like_count' column.
+
+![TikTok Project](assets/input_12.png)
+
+![TikTok Project](assets/put_12.png)
+
+I will also create a histogram of the values in the 'video_like_count' column to further explore the distribution of this variable.
+
+![TikTok Project](assets/input_13.png)
+
+![TikTok Project](assets/put_13.png)
+
+Similar to view count, there are far more videos with < 100,000 likes than there are videos with more. However, in this case, there is more of a taper, as the data skews right, with many videos at the upper extremity of like count.
+
+I will also create a box plot to examine the spread of values in the 'video_comment_count' column.
+
+![TikTok Project](assets/input_14.png)
+
+![TikTok Project](assets/put_14.png)
+
+I will also create a histogram of the values in the 'video_comment_count' column to further explore the distribution of this variable.
+
+![TikTok Project](assets/input_15.png)
+
+![TikTok Project](assets/put_15.png)
+
+Again, the vast majority of videos are grouped at the bottom of the range of values for video comment count. Most videos have fewer than 100 comments. The distribution is very right-skewed.
+
+I will create a box plot to examine the spread of values in the 'video_share_count' column.
+
+![TikTok Project](assets/input_16.png)
+
+![TikTok Project](assets/put_16.png)
+
+I will also create a histogram of the values in the 'video_share_count' column to further explore the distribution of this variable.
+
+![TikTok Project](assets/input_17.png)
+
+![TikTok Project](assets/put_17.png)
+
+The overwhelming majority of videos had fewer than 10,000 shares. The distribution is very skewed to the right.
+
+I will also create a box plot to examine the spread of values in the 'video_download_count' column.
+
+![TikTok Project](assets/input_18.png)
+
+![TikTok Project](assets/put_18.png)
+
+I will also create a histogram of the values in the 'video_download_count' column to further explore the distribution of this variable.
+
+![TikTok Project](assets/input_19.png)
+
+![TikTok Project](assets/put_19.png)
+
+The majority of videos were downloaded fewer than 500 times, but some were downloaded over 12,000 times. Again, the data is very skewed to the right.
+
