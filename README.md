@@ -245,7 +245,7 @@ I will also generate a table of descriptive statistics, using .describe().
 
 **Data Visualisation**
 
-Next, I will move on to visualising the distribution of the data. The visualisations most helpful for considering the distribution of the data include box plots and histograms. Visualising the distribution of the data will help inform the next steps and considerations in the data analysis. For example, data distribution will inform which types of modeling is needed.
+Next, I will proceed to visualise the distribution of the data. The most useful visualisations for examining data distribution include box plots and histograms. Understanding the distribution will guide the next steps in the data analysis process, such as determining the appropriate modelling techniques to apply.
 
 I will create a box plot to examine the spread of values in the 'video_duration_sec' column.
 
@@ -331,3 +331,73 @@ I will also create a histogram of the values in the 'video_download_count' colum
 
 The majority of videos were downloaded fewer than 500 times, but some were downloaded over 12,000 times. Again, the data is very skewed to the right.
 
+Now, I will create a histogram with four bars: one for each combination of claim status and verification status.
+
+![TikTok Project](assets/input_20.png)
+
+![TikTok Project](assets/put_20.png)
+
+There are far fewer verified users than unverified users, but if a user is verified, they are much more likely to post opinions.
+
+Earlier, in the cleaning and organisation phase, I utilised the groupby() function to analyse the count of each claim status by author ban status. Now, I will use a histogram to convey this information visually.
+
+![TikTok Project](assets/input_21.png)
+
+![TikTok Project](assets/put_21.png)
+
+For both claims and opinions, there are many more active authors than banned authors or authors under review; however, the proportion of active authors is far greater for opinion videos than for claim videos. Again, it seems that authors who post claim videos are more likely to come under review and/or get banned.
+
+I will create a bar plot with three bars: one for each author ban status. The height of each bar would correspond with the median number of views for all videos with that author ban status.
+
+![TikTok Project](assets/input_22.png)
+
+![TikTok Project](assets/put_22.png)
+
+The median view counts for non-active authors are many times greater than the median view count for active authors. Since we know that non-active authors are more likely to post claims, and that videos by non-active authors get far more views on aggregate than videos by active authors, then 'video_view_count' might be a good indicator of claim status.
+
+![TikTok Project](assets/input_23.png)
+
+![TikTok Project](assets/put_23.png)
+
+Indeed, a quick check of the median view count by claim status bears out the assessment made above.
+
+I will create a pie graph that depicts the proportions of total views for claim videos and total views for opinion videos.
+
+![TikTok Project](assets/input_24.png)
+
+![TikTok Project](assets/put_24.png)
+
+The overall view count is dominated by claim videos even though there are roughly the same number of each video in the dataset.
+
+**Determine Outliers**
+
+When building predictive models, the presence of outliers can be problematic. For example, if I was trying to predict the view count of a particular video, videos with extremely high view counts might introduce bias to a model. Also, some outliers might indicate problems with how data was captured or recorded.
+
+The ultimate objective of the TikTok project is to build a machine learning model that predicts whether a video is a claim or opinion. The analysis I've performed so far indicates that a video's engagement level is strongly correlated with its claim status. There's no reason to believe that any of the values in the TikTok data are erroneously captured, and they align with expectation of how social media works: a very small proportion of videos get super high engagement levels. That's the nature of viral content.
+
+Nonetheless, it's good practice to get a sense of just how many of my data points could be considered outliers.
+
+In this TikTok dataset, the values for the count variables are not normally distributed. They are heavily skewed to the right. One way of modifying the outlier threshold is by calculating the median value for each variable and then adding 1.5 * IQR. This results in a threshold that is, in this case, much lower than it would be if I used the 3rd quartile, as is the usual practice.
+
+I will write a for loop that iterates over the column names of each count variable. For each iteration, I will:
+- Calculate the IQR of the column
+- Calculate the median of the column
+- Calculate the outlier threshold (median + 1.5 * IQR)
+- Calculate the number of videos with a count in that column that exceeds the outlier threshold
+- Print "Number of outliers, {column name}: {outlier count}"
+
+![TikTok Project](assets/input_25.png)
+
+![TikTok Project](assets/put_25.png)
+
+I will create a scatterplot of `video_view_count` versus `video_like_count` according to 'claim_status'
+
+![TikTok Project](assets/input_26.png)
+
+![TikTok Project](assets/put_26.png)
+
+I will create a scatterplot of `video_view_count` versus `video_like_count` for opinions only.
+
+![TikTok Project](assets/input_27.png)
+
+![TikTok Project](assets/put_27.png)
