@@ -401,3 +401,7 @@ I will create a scatterplot of `video_view_count` versus `video_like_count` for 
 ![TikTok Project](assets/input_27.png)
 
 ![TikTok Project](assets/put_27.png)
+
+The Exploratory Data Analysis (EDA) process is now complete. I have thoroughly examined the data distribution, frequency counts, mean and median values, extreme values/outliers, and addressed any missing data. Additionally, I have analysed correlations between variables, with a particular focus on the relationship between the claim_status variable and others. Below are the links to the executive summary and the formal Tableau visualizations I have provided.
+
+[Link to Executive Summary Presentation](Executive_Summary_2.pdf)
