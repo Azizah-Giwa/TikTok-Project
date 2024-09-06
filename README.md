@@ -207,7 +207,7 @@ To effectively communicate my findings to my teammates and the Tiktok leadership
 
 ## **Step 3 - Exploratory Data Analysis and Data Visualisation**
 
-It is now time to begin the exploratory data analysis (EDA) process. As a data analyst on TikTok's data team, I'll be conducting EDA for the claims classification project. I'll use Python's matplotlib and seaborn libraries to help identify outliers. To create a more polished presentation, I'll use Tableau to design visuals for an executive summary that will help non-technical stakeholders engage with and understand the data. Additionally, I will provide an executive summary of my analysis for the broader data team.
+It is now time to begin the exploratory data analysis (EDA) process. As a data analyst on TikTok's data team, I'll be conducting EDA for the claims classification project. I'll use Python's matplotlib and seaborn libraries to help identify outliers. Additionally, I will provide an executive summary of my analysis for the broader data team.
 
 **Imports, links, and loading**
 
@@ -402,6 +402,6 @@ I will create a scatterplot of `video_view_count` versus `video_like_count` for 
 
 ![TikTok Project](assets/put_27.png)
 
-The Exploratory Data Analysis (EDA) process is now complete. I have thoroughly examined the data distribution, frequency counts, mean and median values, extreme values/outliers, and addressed any missing data. Additionally, I have analysed correlations between variables, with a particular focus on the relationship between the claim_status variable and others. Below are the links to the executive summary and the formal Tableau visualizations I have provided.
+The Exploratory Data Analysis (EDA) process is now complete. I have thoroughly examined the data distribution, frequency counts, mean and median values, extreme values/outliers, and addressed any missing data. Additionally, I have analysed correlations between variables, with a particular focus on the relationship between the claim_status variable and others. Below is the link to the executive summary I have provided for the leadership team.
 
 [Link to Executive Summary Presentation](Executive_Summary_2.pdf)
