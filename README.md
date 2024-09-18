@@ -405,3 +405,97 @@ I will create a scatterplot of `video_view_count` versus `video_like_count` for 
 The Exploratory Data Analysis (EDA) process is now complete. I have thoroughly examined the data distribution, frequency counts, mean and median values, extreme values/outliers, and addressed any missing data. Additionally, I have analysed correlations between variables, with a particular focus on the relationship between the claim_status variable and others. Below is the link to the executive summary I have provided for the leadership team.
 
 [Link to Executive Summary Presentation](Executive_Summary_2.pdf)
+
+## **Step 4 - Data Exploration and Hypothesis Testing**
+
+The project is now reaching its midpoint. So far, I have completed a project proposal and used Python to perform exploratory data analysis on the dataset for the claims classification project. Additionally, I’ve created data visualisations and executive summaries to present to stakeholders. The next step involves applying statistical methods to analyse and interpret the claims classification data. Recently, I received an email from Mary Joanna Rodgers, a project management officer at TikTok, informing me of a new request from the leadership team. They want to determine whether there is a statistically significant difference in the number of views between TikTok videos posted by verified and unverified accounts. After consulting with my data science manager, Rosie Mae Bradshaw, she suggested that I conduct hypothesis testing on the claims classification data. I’ve been tasked with investigating the user claim dataset to identify the most suitable hypothesis testing method for this project.
+
+I am going to divide my tasks into 3 parts to help guide me.
+
+**Part 1: Imports, Data Loading and Data Exploration**
+
+- What data packages will be necessary for hypothesis testing?
+- How will descriptive statistics help me analyse the data?
+
+**Part 2: Conduct hypothesis testing**
+
+- How will I formulate my null hypothesis and alternative hypothesis?
+
+**Part 3: Communicate insights with stakeholders**
+
+- What key business insight(s) emerge from my hypothesis test?
+- What business recommendations do I propose based on my results?
+
+### **Part 1: Imports, Data Loading and Data Exploration**
+
+I will now import packages and libraries needed to compute descriptive statistics and conduct a hypothesis test.
+
+![TikTok Project](assets/input_28.png)
+
+![TikTok Project](assets/input_29.png)
+
+Then, I will use descriptive statistics to conduct Exploratory Data Analysis (EDA).
+
+![TikTok Project](assets/input_30.png)
+
+![TikTok Project](assets/output_30.png)
+
+![TikTok Project](assets/input_31.png)
+
+![TikTok Project](assets/output_31.png)
+
+![TikTok Project](assets/input_32.png)
+
+![TikTok Project](assets/output_32.png)
+
+![TikTok Project](assets/input_33.png)
+
+![TikTok Project](assets/input_34.png)
+
+![TikTok Project](assets/output_34.png)
+
+Since I am interested in the relationship between "verified_status" and "video_view_count", one way to approach this is to examine the mean values of "video_view_count" for each group of verified_status in the sample data, as I have done below:
+
+![TikTok Project](assets/input_35.png)
+
+![TikTok Project](assets/output_35.png)
+
+### **Part 2: Conduct hypothesis testing**
+
+My goal in this step is to conduct a two-sample t-test. I will use the following steps for conducting a hypothesis test in doing this:
+
+- State the null hypothesis and the alternative hypothesis
+- Choose a significance level
+- Find the p-value
+- Reject or fail to reject the null hypothesis
+
+**State the null hypothesis and the alternative hypothesis**
+- **Null hypothesis ~H0~**: There is no difference in number of views between TikTok videos posted by verified accounts and TikTok videos posted by unverified accounts (any observed difference in the sample data is due to chance or sampling variability).
+
+- **Alternative hypothesis ~𝐻𝐴~**: There is a difference in number of views between TikTok videos posted by verified accounts and TikTok videos posted by unverified accounts (any observed difference in the sample data is due to an actual difference in the corresponding population means).
+
+**Choose a significance level**
+
+I am choosing 5% as the significance level and I will proceed with a two-sample t-test.
+
+**Find the p-value**
+
+![TikTok Project](assets/input_36.png)
+
+![TikTok Project](assets/output_36.png)
+
+**Reject or fail to reject the null hypothesis**
+
+Since the p-value is extremely small (pvalue=2.6088823687177823e-120 much smaller than the significance level of 5%), I'll reject the null hypothesis. My conclusiom is that there is a statistically significant difference in the mean video view count between verified and unverified accounts on TikTok.
+
+### **Part 3: Communicate insights with stakeholders**
+
+The analysis shows that there is a statistically significant difference in the average view counts between videos from verified accounts and videos from unverified accounts. This suggests there might be fundamental behavioural differences between these two groups of accounts.
+
+It would be interesting to investigate the root cause of this behavioural difference. For example, do unverified accounts tend to post more clickbait-y videos? Or are unverified accounts associated with spam bots that help inflate view counts?
+
+The next step will be to build a regression model on verified_status. A regression model is the natural next step because the end goal is to make predictions on claim status. A regression model for verified_status can help analyse user behaviour in this group of verified users. Technical note to prepare regression model: because the data is skewed, and there is a significant difference in account types, it will be key to build a logistic regression model.
+
+I have created an executive summary to effectively communicate my results to the leadership team. Below is the link to the executive summary I have provided for the leadership team.
+
+[Link to Executive Summary Presentation](Executive_Summary_3.pdf)
