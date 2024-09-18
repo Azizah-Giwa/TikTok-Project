@@ -470,9 +470,9 @@ My goal in this step is to conduct a two-sample t-test. I will use the following
 - Reject or fail to reject the null hypothesis
 
 **State the null hypothesis and the alternative hypothesis**
-- **Null hypothesis H<sup>0</sub>**: There is no difference in number of views between TikTok videos posted by verified accounts and TikTok videos posted by unverified accounts (any observed difference in the sample data is due to chance or sampling variability).
+- **Null hypothesis H<sup>0</sup>**: There is no difference in number of views between TikTok videos posted by verified accounts and TikTok videos posted by unverified accounts (any observed difference in the sample data is due to chance or sampling variability).
 
-- **Alternative hypothesis H<sup>A</sub>**: There is a difference in number of views between TikTok videos posted by verified accounts and TikTok videos posted by unverified accounts (any observed difference in the sample data is due to an actual difference in the corresponding population means).
+- **Alternative hypothesis H<sup>A</sup>**: There is a difference in number of views between TikTok videos posted by verified accounts and TikTok videos posted by unverified accounts (any observed difference in the sample data is due to an actual difference in the corresponding population means).
 
 **Choose a significance level**
 
