@@ -499,3 +499,364 @@ The next step will be to build a regression model on verified_status. A regressi
 I have created an executive summary to effectively communicate my results to the leadership team. Below is the link to the executive summary I have provided for the leadership team.
 
 [Link to Executive Summary Presentation](Executive_Summary_3.pdf)
+
+## **Step 5 - Regression modeling**
+
+We are now more than halfway through the claims classification project. The TikTok team has reviewed the results of our hypothesis testing, and Maika Abadi, TikTok's Operations Lead, has expressed interest in understanding how various factors are associated with a user's verified status. Previously, the data team observed that verified users are significantly more likely to post opinions. As a result, the team has shifted focus to predicting verified status to better understand the relationship between video characteristics and verified users. I have been tasked with conducting a logistic regression using _"verified_status"_ as the outcome variable. The findings from this analysis may help inform the final model for distinguishing between claim and opinion posts.
+
+I will begin by breaking down my tasks into manageable chunks such as:
+
+- Task 1: Imports and Loading
+- Task 2a: Explore Data with EDA
+- Task 2b: Examine Correlations
+- Task 3a: Select Variables
+- Task 3b: Train-Test Split
+- Task 3c: Encode Variables
+- Task 3d: Model Building
+- Task 4a: Results and Evaluation
+- Task 4b: Visualise Model Results
+- Task 4c: Interpret Model Coefficients
+- Task 4d: Conclusion
+
+### **Task 1: Imports and Loading**
+
+I will start by importing the data and packages that are needed for building regression models.
+
+![TikTok Project](assets/inp_1.png)
+
+Now, I'll load the dataset
+
+![TikTok Project](assets/inp_2.png)
+
+### **Task 2a: Explore Data with EDA**
+
+Next, I'll analyse the data and check for and handle missing values and duplicates.
+
+I'll start by inspecting the first five rows of the dataframe.
+
+![TikTok Project](assets/inp_3.png)
+
+![TikTok Project](assets/out_3.png)
+
+Now, I'll get the number of rows and columns in the dataset.
+
+![TikTok Project](assets/inp_4.png)
+
+![TikTok Project](assets/out_4.png)
+
+and then, get the data types of the columns.
+
+![TikTok Project](assets/inp_5.png)
+
+![TikTok Project](assets/out_5.png)
+
+Moving on, I'll get basic information about the dataset.
+
+![TikTok Project](assets/inp_6.png)
+
+![TikTok Project](assets/out_6.png)
+
+then, generate basic descriptive statistics about the dataset.
+
+![TikTok Project](assets/inp_7.png)
+
+![TikTok Project](assets/out_7.png)
+
+and then check for and handle missing values.
+
+![TikTok Project](assets/inp_8.png)
+
+![TikTok Project](assets/out_8.png)
+
+![TikTok Project](assets/inp_9.png)
+
+![TikTok Project](assets/inp_10.png)
+
+![TikTok Project](assets/out_10.png)
+
+I will also check for and handle duplicates.
+
+![TikTok Project](assets/inp_11.png)
+
+![TikTok Project](assets/out_11.png)
+
+**Note:** There does not seem to be any duplicates.
+
+and then, check for and handle outliers.
+
+![TikTok Project](assets/inp_12.png)
+
+![TikTok Project](assets/out_12.png)
+
+![TikTok Project](assets/inp_13.png)
+
+![TikTok Project](assets/out_13.png)
+
+![TikTok Project](assets/inp_14.png)
+
+![TikTok Project](assets/out_14.png)
+
+![TikTok Project](assets/inp_15.png)
+
+![TikTok Project](assets/out_15.png)
+
+![TikTok Project](assets/inp_16.png)
+
+![TikTok Project](assets/inp_17.png)
+
+Next, I'll check class balance.
+
+![TikTok Project](assets/inp_18.png)
+
+![TikTok Project](assets/out_18.png)
+
+Approximately 94.2% of the dataset represents videos posted by unverified accounts and 5.8% represents videos posted by verified accounts. So, the outcome variable is not very balanced.
+
+Next, I'll use resampling to create class balance in the outcome variable.
+
+![TikTok Project](assets/inp_19.png)
+
+![TikTok Project](assets/out_19.png)
+
+and then, I'll get the average _"video_transcription_text"_ length for videos posted by verified accounts and the average _"video_transcription_text"_ length for videos posted by unverified accounts.
+
+![TikTok Project](assets/inp_20.png)
+
+![TikTok Project](assets/out_20.png)
+
+and, extract the length of each _"video_transcription_text"_ and add this as a column to the dataframe, so that it can be used as a potential feature in the model.
+
+![TikTok Project](assets/inp_21.png)
+
+![TikTok Project](assets/inp_22.png)
+
+![TikTok Project](assets/out_22.png)
+
+Now, I'm going to visualize the distribution of _"video_transcription_text"_ length for videos posted by verified accounts and videos posted by unverified accounts.
+
+![TikTok Project](assets/inp_23.png)
+
+![TikTok Project](assets/out_23.png)
+
+### **Task 2b: Examine correlations**
+
+Next, I will code a correlation matrix to help determine most correlated variables.
+
+![TikTok Project](assets/inp_24.png)
+
+![TikTok Project](assets/out_24.png)
+
+Now, I'll visualise a correlation heatmap of the data.
+
+![TikTok Project](assets/inp_25.png)
+
+![TikTok Project](assets/out_25.png)
+
+One of the model assumptions for logistic regression is no severe multicollinearity among the features. I will take this into consideration as I examine the heatmap and choose which features to proceed with.
+
+The heatmap shows that the following pair of variables are strongly correlated: _"video_view_count"_ and _"video_like_count"_ (0.86 correlation coefficient). To build a logistic regression model that meets the no multicollinearity assumption, I would exclude _"video_like_count"_. And among the variables that quantify video metrics, I would keep _"video_view_count"_, _"video_share_count"_, _"video_download_count"_, and _"video_comment_count"_ as features.
+
+### **Task 3a: Select variables**
+
+First, I'll set my Y and X variables.
+
+![TikTok Project](assets/inp_26.png)
+
+then, select the features.
+
+![TikTok Project](assets/inp_27.png)
+
+![TikTok Project](assets/out_27.png)
+
+I did not select the _"#"_ and _"video_id"_ columns as features, because they do not seem to be helpful for predicting whether a video presents a claim or an opinion. Also, _"video_like_count"_ is not selected as a feature, because it is strongly correlated with other features, as discussed earlier. And logistic regression has a no multicollinearity model assumption that needs to be met.
+
+### **Task 3b: Train-Test Split**
+
+I'll split the data into training and testing sets.
+
+![TikTok Project](assets/inp_28.png)
+
+Then, I'll confirm that the dimensions of the training and testing sets are in alignment.
+
+![TikTok Project](assets/inp_29.png)
+
+![TikTok Project](assets/out_29.png)
+
+- The number of features (7) aligns between the training and testing sets.
+- The number of rows aligns between the features and the outcome variable for training (26826) and testing (8942).
+
+### **Task 3c: Encode variables**
+
+I'll check the data types of the features.
+
+![TikTok Project](assets/inp_30.png)
+
+![TikTok Project](assets/out_30.png)
+
+![TikTok Project](assets/inp_31.png)
+
+![TikTok Project](assets/out_31.png)
+
+![TikTok Project](assets/inp_32.png)
+
+![TikTok Project](assets/out_32.png)
+
+As shown above, the _"claim_status"_ and _"author_ban_status"_ features are each of data type object currently. In order to work with the implementations of models through sklearn, these categorical features will need to be made numeric. One way to do this is through one-hot encoding.
+
+![TikTok Project](assets/inp_33.png)
+
+![TikTok Project](assets/out_33.png)
+
+![TikTok Project](assets/inp_34.png)
+
+![TikTok Project](assets/inp_35.png)
+
+![TikTok Project](assets/inp_36.png)
+
+![TikTok Project](assets/out_36.png)
+
+![TikTok Project](assets/inp_37.png)
+
+![TikTok Project](assets/out_37.png)
+
+![TikTok Project](assets/inp_38.png)
+
+![TikTok Project](assets/out_38.png)
+
+![TikTok Project](assets/inp_39.png)
+
+![TikTok Project](assets/out_39.png)
+
+![TikTok Project](assets/inp_40.png)
+
+![TikTok Project](assets/out_40.png)
+
+Now, I'll check the data type of the outcome variable.
+
+![TikTok Project](assets/inp_41.png)
+
+![TikTok Project](assets/out_41.png)
+
+![TikTok Project](assets/inp_42.png)
+
+![TikTok Project](assets/out_42.png)
+
+As shown above, the outcome variable is of data type object currently. One-hot encoding can be used to make this variable numeric.
+
+![TikTok Project](assets/inp_43.png)
+
+![TikTok Project](assets/inp_44.png)
+
+![TikTok Project](assets/out_44.png)
+
+### **Task 3d: Model Building**
+
+Here, I will construct a model and fit it to the training set.
+
+![TikTok Project](assets/inp_45.png)
+
+### **Task 4a: Results and Evaluation**
+
+To evaluate the model, I'll start by encoding categorical features in the testing set using an appropriate method.
+
+![TikTok Project](assets/inp_46.png)
+
+![TikTok Project](assets/out_46.png)
+
+![TikTok Project](assets/inp_47.png)
+
+![TikTok Project](assets/out_47.png)
+
+![TikTok Project](assets/inp_48.png)
+
+![TikTok Project](assets/out_48.png)
+
+![TikTok Project](assets/inp_49.png)
+
+![TikTok Project](assets/out_49.png)
+
+![TikTok Project](assets/inp_50.png)
+
+![TikTok Project](assets/out_50.png)
+
+Then I'll test the logistic regression model by using it to make predictions on the encoded testing set.
+
+![TikTok Project](assets/inp_51.png)
+
+Then, I'll display the predictions on the encoded testing set.
+
+![TikTok Project](assets/inp_52.png)
+
+![TikTok Project](assets/out_52.png)
+
+and now, display the true labels of the testing set.
+
+![TikTok Project](assets/inp_53.png)
+
+![TikTok Project](assets/out_53.png)
+
+Then, I'll encode the true labels of the testing set so it can be compared to the predictions.
+
+![TikTok Project](assets/inp_54.png)
+
+![TikTok Project](assets/out_54.png)
+
+And then, I'll confirm again that the dimensions of the training and testing sets are in alignment since additional features were added.
+
+![TikTok Project](assets/inp_55.png)
+
+![TikTok Project](assets/out_55.png)
+
+- The number of features (8) aligns between the training and testing sets.
+- The number of rows aligns between the features and the outcome variable for training (26826) and testing (8942).
+
+### **Task 4b: Visualise Model Results**
+
+I will create a confusion matrix to visualise the results of the logistic regression model.
+
+![TikTok Project](assets/inp_56.png)
+
+![TikTok Project](assets/out_56.png)
+
+**The upper-left quadrant displays the number of true negatives:** the number of videos posted by unverified accounts that the model accurately classified as so.
+
+**The upper-right quadrant displays the number of false positives:** the number of videos posted by unverified accounts that the model misclassified as posted by verified accounts.
+
+**The lower-left quadrant displays the number of false negatives:** the number of videos posted by verified accounts that the model misclassified as posted by unverified accounts.
+
+**The lower-right quadrant displays the number of true positives:** the number of videos posted by verified accounts that the model accurately classified as so.
+
+A perfect model would yield all true negatives and true positives, and no false negatives or false positives.
+
+Now, I'll create a classification report that includes precision, recall, f1-score, and accuracy metrics to evaluate the performance of the logistic regression model.
+
+![TikTok Project](assets/inp_57.png)
+
+![TikTok Project](assets/out_57.png)
+
+The classification report shows that the logistic regression model achieved a precision of 61% and a recall of 84%, and it achieved an accuracy of 65%. Note that the precision and recall scores are taken from the "not verified" row of the output because that is the target class that we are most interested in predicting. The "verified" class has its own precision/recall metrics, and the weighted average represents the combined metrics for both classes of the target variable.
+
+### **Task 4c: Interpret Model Coefficients**
+
+![TikTok Project](assets/inp_58.png)
+
+![TikTok Project](assets/out_58.png)
+
+### **Task 4d: Conclusion**
+
+1. What are the key takeaways from this project?
+2. What results can be presented from this project?
+
+**Key takeaways:**
+
+- The dataset has a few strongly correlated variables, which might lead to multicollinearity issues when fitting a logistic regression model. Hence, I decided to drop *video_like_count* from the model building.
+- Based on the logistic regression model, each additional second of the video is associated with a 0.009 increase in the log-odds of the user having a verified status.
+- The logistic regression model had not great, but acceptable predictive power: a precision of 61% is less than ideal, but a recall of 84% is very good. Overall accuracy is towards the lower end of what would typically be considered acceptable.
+
+**Results:**
+
+I developed a logistic regression model for verified status based on video features. The model had decent predictive power. Based on the estimated model coefficients from the logistic regression, longer videos tend to be associated with higher odds of the user being verified. Other video features have small estimated coefficients in the model, so their association with verified status seems to be small.
+
+I have also created an executive summary to effectively communicate my results to the leadership team. Below is the link to the executive summary I have provided for the leadership team.
+
+[Link to Executive Summary Presentation](Executive_Summary_4.pdf)
