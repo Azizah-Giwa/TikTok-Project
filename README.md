@@ -1220,3 +1220,6 @@ The most predictive features were all associated with the engagement levels gene
   The current version of the model does not need any new features. However, it would be helpful to have the number of times the video was reported. It would also be useful to have the total number of user
   reports for all videos posted by each author.
 
+I have also created an executive summary to effectively communicate my results to the leadership team. Below is the link to the executive summary I have provided for the leadership team.
+
+[Link to Executive Summary Presentation](Executive_Summary_5.pdf)
