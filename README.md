@@ -860,3 +860,363 @@ I developed a logistic regression model for verified status based on video featu
 I have also created an executive summary to effectively communicate my results to the leadership team. Below is the link to the executive summary I have provided for the leadership team.
 
 [Link to Executive Summary Presentation](Executive_Summary_4.pdf)
+
+## **Step 6 - Classifying Videos Using Machine Learning**
+
+My supervisor was impressed with the work I have done and has requested that I build a machine learning model that can be used to determine whether a video contains a claim or whether it offers an opinion. With a successful prediction model, TikTok can reduce the backlog of user reports and prioritise them more efficiently.
+
+TikTok users can report videos that they believe violate the platform's terms of service. Because there are millions of TikTok videos created and viewed every day, this means that many videos get reported — too many to be individually reviewed by a human moderator.
+
+Analysis indicates that when authors do violate the terms of service, they're much more likely to be presenting a claim than an opinion. Therefore, it is useful to be able to determine which videos make claims and which videos are opinions.
+
+TikTok wants to build a machine learning model to help identify claims and opinions. Videos that are labeled opinions will be less likely to go on to be reviewed by a human moderator. Videos that are labeled as claims will be further sorted by a downstream process to determine whether they should get prioritised for review. For example, perhaps videos that are classified as claims would then be ranked by how many times they were reported, then the top x% would be reviewed by a human each day.
+
+A machine learning model would greatly assist in the effort to present human moderators with videos that are most likely to be in violation of TikTok's terms of service.
+
+**_Note:_** The data dictionary shows that there is a column called 'claim_status'. This is a binary value that indicates whether a video is a claim or an opinion. This will be the target variable. In other words, for each video, the model should predict whether the video is a claim or an opinion.
+
+This is a classification task because the model is predicting a binary class.
+
+**To select an evaluation metric**
+
+To determine which evaluation metric might be best, I'm going to consider how the model might be wrong. There are two possibilities for bad predictions:
+
+- **_False positives_**: When the model predicts a video is a claim when in fact it is an opinion
+- **_False negatives_**: When the model predicts a video is an opinion when in fact it is a claim
+
+**What are the ethical implications of building the model?**
+
+It is better for the model to predict false positives when it makes a mistake, and worse for it to predict false negatives. It's very important to identify videos that break the terms of service, even if that means some opinion videos are misclassified as claims. The worst case for an opinion misclassified as a claim is that the video goes to human review. The worst case for a claim that's misclassified as an opinion is that the video does not get reviewed and it violates the terms of service. A video that violates the terms of service would be considered posted from a "banned" author, as referenced in the data dictionary.
+
+Because it's more important to minimise false negatives, the model evaluation metric will be **recall**.
+
+**Modeling workflow and model selection process**
+
+Previous work with this data has revealed that there are ~20,000 videos in the sample. This is sufficient to conduct a rigorous model validation workflow, broken into the following steps:
+
+- Split the data into train/validation/test sets (60/20/20)
+- Fit models and tune hyperparameters on the training set
+- Perform final model selection on the validation set
+- Assess the champion model's performance on the test set
+
+I will begin by breaking down my tasks into manageable chunks such as:
+
+- Task 1: Imports and loading
+- Task 2: Examine data, summary info, and descriptive stats
+- Task 3: Feature engineering
+- Task 4: Split the data
+- Task 5: Create train/validate/test sets
+- Task 6: Tokenize text column
+- Task 7: Build models
+- Task 8: Evaluate models
+
+### **Task 1: Imports and Loading**
+
+I'll start by importing packages needed to build machine learning models to achieve the goal of this project.
+
+![TikTok Project](assets/inp_60.png)
+
+Now, I'll load the dataset.
+
+![TikTok Project](assets/inp_2.png)
+
+### **Task 2: Examine Data, Summary Info, and Descriptive Stats**
+
+Here, I'll inspect the first five rows of the dataframe.
+
+![TikTok Project](assets/inp_61.png)
+
+![TikTok Project](assets/out_61.png)
+
+Then, I'll get the number of rows and columns in the dataset.
+
+![TikTok Project](assets/inp_62.png)
+
+![TikTok Project](assets/out_62.png)
+
+And then, I'll get basic information about the dataset.
+
+![TikTok Project](assets/inp_63.png)
+
+![TikTok Project](assets/out_63.png)
+
+Then, generate basic descriptive statistics about the dataset.
+
+![TikTok Project](assets/inp_64.png)
+
+![TikTok Project](assets/out_64.png)
+
+Then, I'll check for and handle missing values.
+
+![TikTok Project](assets/inp_65.png)
+
+![TikTok Project](assets/out_65.png)
+
+Since there are very few missing values relative to the number of samples in the dataset, I'll drop observations with missing values.
+
+![TikTok Project](assets/inp_66.png)
+
+Then, I'll check for and handle duplicates.
+
+![TikTok Project](assets/inp_67.png)
+
+![TikTok Project](assets/out_67.png)
+
+There are no duplicate observations in the data.
+
+The next step is to examine and address outliers. However, since tree-based models are robust to outliers, there is no need to impute or remove any values based on their position within the distribution.
+
+Now, I'll check class balance
+
+![TikTok Project](assets/inp_68.png)
+
+![TikTok Project](assets/out_68.png)
+
+Approximately 50.3% of the dataset represents claims and 49.7% represents opinions, so the outcome variable is balanced.
+
+### **Task 3: Feature Engineering**
+
+**Feature Extraction**
+
+I would extract the length (character count) of each "video_transcription_text" and add this to the dataframe as a new column called "text_length" so that it can be used as a feature in the model.
+
+![TikTok Project](assets/inp_69.png)
+
+![TikTok Project](assets/out_69.png)
+
+Then, I would calculate the average "text_length" for claims and opinions.
+
+![TikTok Project](assets/inp_70.png)
+
+![TikTok Project](assets/out_70.png)
+
+To visualise the distribution of "text_length" for claims and opinions using a histogram:
+
+![TikTok Project](assets/inp_71.png)
+
+![TikTok Project](assets/out_71.png)
+
+Letter count distributions for both claims and opinions are approximately normal with a slight right skew. Claim videos tend to have more characters - about 13 more on average, as indicated above.
+
+**Feature Selection and Transformation**
+
+Next, I will select and encode target and catgorical variables.
+
+![TikTok Project](assets/inp_72.png)
+
+![TikTok Project](assets/out_72.png)
+
+### **Task 4: Split the Data**
+
+Here, I will assign target variable.
+
+In this case, the target variable is "claim_status".
+
+- 0 represents an opinion
+- 1 represents a claim
+
+![TikTok Project](assets/inp_73.png)
+
+Then, I would isolate the features.
+
+![TikTok Project](assets/inp_74.png)
+
+![TikTok Project](assets/out_74.png)
+
+### **Task 5: Create Train/Validate/Test sets**
+
+Here, I'll split data into training and testing sets, 80/20.
+
+![TikTok Project](assets/inp_75.png)
+
+Then, split the training set into training and validation sets, 75/25, to result in a final ratio of 60/20/20 for train/validate/test sets.
+
+![TikTok Project](assets/inp_76.png)
+
+And then, confirm that the dimensions of the training, validation, and testing sets are in alignment.
+
+![TikTok Project](assets/inp_77.png)
+
+![TikTok Project](assets/out_77.png)
+
+- The number of features (11) aligns between the training and testing sets.
+- The number of rows aligns between the features and the outcome variable for training (11,450) and both validation and testing data (3,817).
+
+### **Task 6: Tokenise Text Column**
+
+The feature "video_transcription_text" is text-based. It is not a categorical variable, since it does not have a fixed number of possible values. One way to extract numerical features from it is through a bag-of-words algorithm like CountVectorizer.
+
+![TikTok Project](assets/inp_78.png)
+
+![TikTok Project](assets/out_78.png)
+
+Now, I'll fit the vectoriser to the training data (generate the n-grams) and transform it (tally the occurrences).
+
+![TikTok Project](assets/inp_79.png)
+
+![TikTok Project](assets/out_79.png)
+
+![TikTok Project](assets/inp_80.png)
+
+![TikTok Project](assets/out_80.png)
+
+![TikTok Project](assets/inp_81.png)
+
+![TikTok Project](assets/out_81.png)
+
+Next, I will extract n-gram counts for the validation data. The vectoriser will not be refit to the validation data but will only transform it. In other words, the video transcriptions in the validation data will be assessed using the n-grams identified in the training data.
+
+![TikTok Project](assets/inp_82.png)
+
+![TikTok Project](assets/out_82.png)
+
+![TikTok Project](assets/inp_83.png)
+
+![TikTok Project](assets/out_83.png)
+
+![TikTok Project](assets/inp_84.png)
+
+![TikTok Project](assets/out_84.png)
+
+I will repeat the process to extract n-gram counts for the test data. As before, the vectoriser will not be refit to the test data but will only transform it.
+
+![TikTok Project](assets/inp_85.png)
+
+![TikTok Project](assets/out_85.png)
+
+### **Task 7: Build Models**
+
+**Build a Random Forest Model**
+
+Here, I will fit a random forest model to the training set, use cross-validation to tune the hyperparameters and select the model that performs best on recall.
+
+![TikTok Project](assets/inp_86.png)
+
+![TikTok Project](assets/inp_87.png)
+
+![TikTok Project](assets/out_87.png)
+
+![TikTok Project](assets/inp_88.png)
+
+![TikTok Project](assets/out_88.png)
+
+![TikTok Project](assets/inp_89.png)
+
+![TikTok Project](assets/out_89.png)
+
+This model performs exceptionally well, with an average recall score of 0.995 across the five cross-validation folds. After checking the precision score to be sure the model is not classifying all samples as claims, it is clear that this model is making almost perfect classifications.
+
+**Build an XGBoost Model**
+
+![TikTok Project](assets/inp_90.png)
+
+![TikTok Project](assets/inp_91.png)
+
+![TikTok Project](assets/out_91.png)
+
+![TikTok Project](assets/inp_92.png)
+
+![TikTok Project](assets/out_92.png)
+
+![TikTok Project](assets/inp_93.png)
+
+![TikTok Project](assets/out_93.png)
+
+This model also performs exceptionally well. Although its recall score is very slightly lower than the random forest model's, its precision score is perfect.
+
+### **Task 8: Evaluate Models**
+
+Here, I will evaluate models against validation data.
+
+**Random Forest**
+
+![TikTok Project](assets/inp_94.png)
+
+To display the predictions on the validation set:
+
+![TikTok Project](assets/inp_95.png)
+
+![TikTok Project](assets/out_95.png)
+
+To display the true labels of the validation set:
+
+![TikTok Project](assets/inp_96.png)
+
+![TikTok Project](assets/out_96.png)
+
+I'll create a confusion matrix to visualise the results of the classification model.
+
+![TikTok Project](assets/inp_97.png)
+
+![TikTok Project](assets/out_97.png)
+
+- The upper-left quadrant displays the number of true negatives: the number of opinions that the model accurately classified as so.
+- The upper-right quadrant displays the number of false positives: the number of opinions that the model misclassified as claims.
+- The lower-left quadrant displays the number of false negatives: the number of claims that the model misclassified as opinions.
+- The lower-right quadrant displays the number of true positives: the number of claims that the model accurately classified as so.
+
+A perfect model would yield all true negatives and true positives, and no false negatives or false positives.
+
+As the above confusion matrix shows, this model does not produce any false negatives.
+
+Next, I'll create a classification report that includes precision, recall, f1-score, and accuracy metrics to evaluate the performance of the model.
+
+![TikTok Project](assets/inp_98.png)
+
+![TikTok Project](assets/out_98.png)
+
+The classification report above shows that the random forest model scores were nearly perfect. The confusion matrix indicates that there were 10 misclassifications — five false postives and five false negatives.
+
+**XGBoost**
+
+Now, I'll evaluate the XGBoost model on the validation set.
+
+![TikTok Project](assets/inp_99.png)
+
+![TikTok Project](assets/inp_100.png)
+
+![TikTok Project](assets/out_100.png)
+
+![TikTok Project](assets/inp_101.png)
+
+![TikTok Project](assets/out_101.png)
+
+![TikTok Project](assets/inp_102.png)
+
+![TikTok Project](assets/out_102.png)
+
+The XGBoost model also delivered nearly perfect results; however, its errors were primarily false negatives. Since identifying claims is the priority, it is crucial for the model to excel at capturing all actual claim videos. The random forest model demonstrated a higher recall score and is, therefore, the selected champion model.
+
+**Use Champion Model to Predict on Test Data**
+
+Both the random forest and XGBoost model architectures resulted in nearly perfect models. Nonetheless, in this case, the random forest model performed a little bit better, so it is the champion model.
+
+Now, I'll use the champion model to predict on the test data.
+
+![TikTok Project](assets/inp_103.png)
+
+![TikTok Project](assets/inp_104.png)
+
+![TikTok Project](assets/out_104.png)
+
+**Feature Importances of Champion Model**
+
+![TikTok Project](assets/inp_105.png)
+
+![TikTok Project](assets/out_105.png)
+
+The most predictive features were all associated with the engagement levels generated by the video. This aligns with expectations, as insights from the earlier exploratory data analysis (EDA) indicated a similar pattern.
+
+**Conclusion**
+
+- Would I recommend using this model? Why or why not?
+  Yes, I will recommend this model because it performed well on both the validation and test holdout data. Furthermore, both precision and F1 scores were consistently high. The model very successfully
+  classified claims and opinions.
+- What was the model doing? How was it making predictions?
+  The model's most predictive features were all related to the user engagement levels associated with each video. It was classifying videos based on how many views, likes, shares, and downloads they received.
+- Are there new features that can be engineered that might improve model performance?
+  Because the model currently performs nearly perfectly, there is no need to engineer any new features.
+- What features are good to have that would likely improve the performance of the model?
+  The current version of the model does not need any new features. However, it would be helpful to have the number of times the video was reported. It would also be useful to have the total number of user
+  reports for all videos posted by each author.
+
