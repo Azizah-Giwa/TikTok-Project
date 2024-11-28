@@ -116,7 +116,7 @@ Many of the count variables seem to have outliers at the high end of the distrib
 
 In this phase, I will begin to investigate the variables more closely to better understand them.
 
-I know from the project proposal that the ultimate objective is to use machine learning to classify videos as either claims or opinions. The first step towards understanding the data might therefore be to examine the claim_status variable. I will begin by determining how many videos there are for each different claim status.
+I know from the project proposal that the ultimate objective is to use machine learning to classify videos as either claims or opinions. The first step towards understanding the data might therefore be to examine the `claim_status` variable. I will begin by determining how many videos there are for each different claim status.
 
 Note: A claim refers to information that is either unsourced or from an unverified source. For example, “The news reported that someone revealed that around 50% of the mined gold on Earth comes from one source.”
 Opinions refer to the personal beliefs or thoughts of a group or an individual. Here’s an example, “In my opinion the most productive workday of the week is Tuesday.”
@@ -164,9 +164,9 @@ I will continue investigating engagement levels, now focusing on author_ban_stat
 
 Banned authors have a median share count that's 33 times the median share count of active authors! I will explore this in more depth by using groupby() to group the data by author_ban_status, then use agg() to get the count, mean, and median of each of the following columns:
 
-- video_view_count
-- video_like_count
-- video_share_count
+- `video_view_count`
+- `video_like_count`
+- `video_share_count`
 
 ![TikTok Project](assets/agg.png)
 
@@ -179,9 +179,9 @@ A few observations stand out:
 
 Now, I will create three new columns to help better understand engagement rates:
 
-- _likes_per_view_: represents the number of likes divided by the number of views for each video
-- _comments_per_view_: represents the number of comments divided by the number of views for each video
-- _shares_per_view_: represents the number of shares divided by the number of views for each video
+- `likes_per_view`: represents the number of likes divided by the number of views for each video
+- `comments_per_view`: represents the number of comments divided by the number of views for each video
+- `shares_per_view`: represents the number of shares divided by the number of views for each video
 
 ![TikTok Project](assets/likes_per_view.png)
 
@@ -247,13 +247,13 @@ I will also generate a table of descriptive statistics, using .describe().
 
 Next, I will proceed to visualise the distribution of the data. The most useful visualisations for examining data distribution include box plots and histograms. Understanding the distribution will guide the next steps in the data analysis process, such as determining the appropriate modelling techniques to apply.
 
-I will create a box plot to examine the spread of values in the 'video_duration_sec' column.
+I will create a box plot to examine the spread of values in the `video_duration_sec` column.
 
 ![TikTok Project](assets/input_8.png)
 
 ![TikTok Project](assets/put_8.png)
 
-I will also create a histogram of the values in the 'video_duration_sec' column to further explore the distribution of this variable.
+I will also create a histogram of the values in the `video_duration_sec` column to further explore the distribution of this variable.
 
 ![TikTok Project](assets/input_9.png)
 
@@ -261,13 +261,13 @@ I will also create a histogram of the values in the 'video_duration_sec' column 
 
 All videos are 5-60 seconds in length, and the distribution is uniform.
 
-I will create a box plot to examine the spread of values in the 'video_view_count' column.
+I will create a box plot to examine the spread of values in the `video_view_count` column.
 
 ![TikTok Project](assets/input_10.png)
 
 ![TikTok Project](assets/put_10.png)
 
-I will also create a histogram of the values in the 'video_view_count' column to further explore the distribution of this variable.
+I will also create a histogram of the values in the `video_view_count` column to further explore the distribution of this variable.
 
 ![TikTok Project](assets/input_11.png)
 
@@ -275,13 +275,13 @@ I will also create a histogram of the values in the 'video_view_count' column to
 
 This variable has a very uneven distribution, with more than half the videos receiving fewer than 100,000 views. Distribution of view counts > 100,000 views is uniform.
 
-I will create a box plot to examine the spread of values in the 'video_like_count' column.
+I will create a box plot to examine the spread of values in the `video_like_count` column.
 
 ![TikTok Project](assets/input_12.png)
 
 ![TikTok Project](assets/put_12.png)
 
-I will also create a histogram of the values in the 'video_like_count' column to further explore the distribution of this variable.
+I will also create a histogram of the values in the `video_like_count` column to further explore the distribution of this variable.
 
 ![TikTok Project](assets/input_13.png)
 
@@ -289,13 +289,13 @@ I will also create a histogram of the values in the 'video_like_count' column to
 
 Similar to view count, there are far more videos with < 100,000 likes than there are videos with more. However, in this case, there is more of a taper, as the data skews right, with many videos at the upper extremity of like count.
 
-I will also create a box plot to examine the spread of values in the 'video_comment_count' column.
+I will also create a box plot to examine the spread of values in the `video_comment_count` column.
 
 ![TikTok Project](assets/input_14.png)
 
 ![TikTok Project](assets/put_14.png)
 
-I will also create a histogram of the values in the 'video_comment_count' column to further explore the distribution of this variable.
+I will also create a histogram of the values in the `video_comment_count` column to further explore the distribution of this variable.
 
 ![TikTok Project](assets/input_15.png)
 
@@ -303,13 +303,13 @@ I will also create a histogram of the values in the 'video_comment_count' column
 
 Again, the vast majority of videos are grouped at the bottom of the range of values for video comment count. Most videos have fewer than 100 comments. The distribution is very right-skewed.
 
-I will create a box plot to examine the spread of values in the 'video_share_count' column.
+I will create a box plot to examine the spread of values in the `video_share_count` column.
 
 ![TikTok Project](assets/input_16.png)
 
 ![TikTok Project](assets/put_16.png)
 
-I will also create a histogram of the values in the 'video_share_count' column to further explore the distribution of this variable.
+I will also create a histogram of the values in the `video_share_count` column to further explore the distribution of this variable.
 
 ![TikTok Project](assets/input_17.png)
 
@@ -317,13 +317,13 @@ I will also create a histogram of the values in the 'video_share_count' column t
 
 The overwhelming majority of videos had fewer than 10,000 shares. The distribution is very skewed to the right.
 
-I will also create a box plot to examine the spread of values in the 'video_download_count' column.
+I will also create a box plot to examine the spread of values in the `video_download_count` column.
 
 ![TikTok Project](assets/input_18.png)
 
 ![TikTok Project](assets/put_18.png)
 
-I will also create a histogram of the values in the 'video_download_count' column to further explore the distribution of this variable.
+I will also create a histogram of the values in the `video_download_count` column to further explore the distribution of this variable.
 
 ![TikTok Project](assets/input_19.png)
 
@@ -353,7 +353,7 @@ I will create a bar plot with three bars: one for each author ban status. The he
 
 ![TikTok Project](assets/put_22.png)
 
-The median view counts for non-active authors are many times greater than the median view count for active authors. Since we know that non-active authors are more likely to post claims, and that videos by non-active authors get far more views on aggregate than videos by active authors, then 'video_view_count' might be a good indicator of claim status.
+The median view counts for non-active authors are many times greater than the median view count for active authors. Since we know that non-active authors are more likely to post claims, and that videos by non-active authors get far more views on aggregate than videos by active authors, then `video_view_count` might be a good indicator of claim status.
 
 ![TikTok Project](assets/input_23.png)
 
@@ -402,7 +402,7 @@ I will create a scatterplot of `video_view_count` versus `video_like_count` for 
 
 ![TikTok Project](assets/put_27.png)
 
-The Exploratory Data Analysis (EDA) process is now complete. I have thoroughly examined the data distribution, frequency counts, mean and median values, extreme values/outliers, and addressed any missing data. Additionally, I have analysed correlations between variables, with a particular focus on the relationship between the claim_status variable and others. Below is the link to the executive summary I have provided for the leadership team.
+The Exploratory Data Analysis (EDA) process is now complete. I have thoroughly examined the data distribution, frequency counts, mean and median values, extreme values/outliers, and addressed any missing data. Additionally, I have analysed correlations between variables, with a particular focus on the relationship between the `claim_status` variable and others. Below is the link to the executive summary I have provided for the leadership team.
 
 [Link to Executive Summary Presentation](Executive_Summary_2.pdf)
 
@@ -454,7 +454,7 @@ Then, I will use descriptive statistics to conduct Exploratory Data Analysis (ED
 
 ![TikTok Project](assets/output_34.png)
 
-Since I am interested in the relationship between "verified_status" and "video_view_count", one way to approach this is to examine the mean values of "video_view_count" for each group of verified_status in the sample data, as I have done below:
+Since I am interested in the relationship between `verified_status` and `video_view_count`, one way to approach this is to examine the mean values of `video_view_count` for each group of `verified_status` in the sample data, as I have done below:
 
 ![TikTok Project](assets/input_35.png)
 
@@ -494,7 +494,7 @@ The analysis shows that there is a statistically significant difference in the a
 
 It would be interesting to investigate the root cause of this behavioural difference. For example, do unverified accounts tend to post more clickbait-y videos? Or are unverified accounts associated with spam bots that help inflate view counts?
 
-The next step will be to build a regression model on verified_status. A regression model is the natural next step because the end goal is to make predictions on claim status. A regression model for verified_status can help analyse user behaviour in this group of verified users. Technical note to prepare regression model: because the data is skewed, and there is a significant difference in account types, it will be key to build a logistic regression model.
+The next step will be to build a regression model on `verified_status`. A regression model is the natural next step because the end goal is to make predictions on claim status. A regression model for verified_status can help analyse user behaviour in this group of verified users. Technical note to prepare regression model: because the data is skewed, and there is a significant difference in account types, it will be key to build a logistic regression model.
 
 I have created an executive summary to effectively communicate my results to the leadership team. Below is the link to the executive summary I have provided for the leadership team.
 
@@ -502,7 +502,7 @@ I have created an executive summary to effectively communicate my results to the
 
 ## **Step 5 - Regression modeling**
 
-We are now more than halfway through the claims classification project. The TikTok team has reviewed the results of our hypothesis testing, and Maika Abadi, TikTok's Operations Lead, has expressed interest in understanding how various factors are associated with a user's verified status. Previously, the data team observed that verified users are significantly more likely to post opinions. As a result, the team has shifted focus to predicting verified status to better understand the relationship between video characteristics and verified users. I have been tasked with conducting a logistic regression using _"verified_status"_ as the outcome variable. The findings from this analysis may help inform the final model for distinguishing between claim and opinion posts.
+We are now more than halfway through the claims classification project. The TikTok team has reviewed the results of our hypothesis testing, and Maika Abadi, TikTok's Operations Lead, has expressed interest in understanding how various factors are associated with a user's verified status. Previously, the data team observed that verified users are significantly more likely to post opinions. As a result, the team has shifted focus to predicting verified status to better understand the relationship between video characteristics and verified users. I have been tasked with conducting a logistic regression using `verified_status` as the outcome variable. The findings from this analysis may help inform the final model for distinguishing between claim and opinion posts.
 
 I will begin by breaking down my tasks into manageable chunks such as:
 
@@ -618,13 +618,13 @@ Next, I'll use resampling to create class balance in the outcome variable.
 
 ![TikTok Project](assets/out_19.png)
 
-and then, I'll get the average _"video_transcription_text"_ length for videos posted by verified accounts and the average _"video_transcription_text"_ length for videos posted by unverified accounts.
+and then, I'll get the average `video_transcription_text` length for videos posted by verified accounts and the average `video_transcription_text` length for videos posted by unverified accounts.
 
 ![TikTok Project](assets/inp_20.png)
 
 ![TikTok Project](assets/out_20.png)
 
-and, extract the length of each _"video_transcription_text"_ and add this as a column to the dataframe, so that it can be used as a potential feature in the model.
+and, extract the length of each `video_transcription_text` and add this as a column to the dataframe, so that it can be used as a potential feature in the model.
 
 ![TikTok Project](assets/inp_21.png)
 
@@ -632,7 +632,7 @@ and, extract the length of each _"video_transcription_text"_ and add this as a c
 
 ![TikTok Project](assets/out_22.png)
 
-Now, I'm going to visualize the distribution of _"video_transcription_text"_ length for videos posted by verified accounts and videos posted by unverified accounts.
+Now, I'm going to visualize the distribution of `video_transcription_text` length for videos posted by verified accounts and videos posted by unverified accounts.
 
 ![TikTok Project](assets/inp_23.png)
 
@@ -654,7 +654,7 @@ Now, I'll visualise a correlation heatmap of the data.
 
 One of the model assumptions for logistic regression is no severe multicollinearity among the features. I will take this into consideration as I examine the heatmap and choose which features to proceed with.
 
-The heatmap shows that the following pair of variables are strongly correlated: _"video_view_count"_ and _"video_like_count"_ (0.86 correlation coefficient). To build a logistic regression model that meets the no multicollinearity assumption, I would exclude _"video_like_count"_. And among the variables that quantify video metrics, I would keep _"video_view_count"_, _"video_share_count"_, _"video_download_count"_, and _"video_comment_count"_ as features.
+The heatmap shows that the following pair of variables are strongly correlated: `video_view_count` and `video_like_count` (0.86 correlation coefficient). To build a logistic regression model that meets the no multicollinearity assumption, I would exclude `video_like_count`. And among the variables that quantify video metrics, I would keep `video_view_count`, `video_share_count`, `video_download_count`, and `video_comment_count` as features.
 
 ### **Task 3a: Select variables**
 
@@ -668,7 +668,7 @@ then, select the features.
 
 ![TikTok Project](assets/out_27.png)
 
-I did not select the _"#"_ and _"video_id"_ columns as features, because they do not seem to be helpful for predicting whether a video presents a claim or an opinion. Also, _"video_like_count"_ is not selected as a feature, because it is strongly correlated with other features, as discussed earlier. And logistic regression has a no multicollinearity model assumption that needs to be met.
+I did not select the `#` and `video_id` columns as features, because they do not seem to be helpful for predicting whether a video presents a claim or an opinion. Also, `video_like_count` is not selected as a feature, because it is strongly correlated with other features, as discussed earlier. And logistic regression has a no multicollinearity model assumption that needs to be met.
 
 ### **Task 3b: Train-Test Split**
 
@@ -701,7 +701,7 @@ I'll check the data types of the features.
 
 ![TikTok Project](assets/out_32.png)
 
-As shown above, the _"claim_status"_ and _"author_ban_status"_ features are each of data type object currently. In order to work with the implementations of models through sklearn, these categorical features will need to be made numeric. One way to do this is through one-hot encoding.
+As shown above, the `claim_status` and `author_ban_status` features are each of data type object currently. In order to work with the implementations of models through sklearn, these categorical features will need to be made numeric. One way to do this is through one-hot encoding.
 
 ![TikTok Project](assets/inp_33.png)
 
@@ -873,7 +873,7 @@ TikTok wants to build a machine learning model to help identify claims and opini
 
 A machine learning model would greatly assist in the effort to present human moderators with videos that are most likely to be in violation of TikTok's terms of service.
 
-**_Note:_** The data dictionary shows that there is a column called 'claim_status'. This is a binary value that indicates whether a video is a claim or an opinion. This will be the target variable. In other words, for each video, the model should predict whether the video is a claim or an opinion.
+**_Note:_** The data dictionary shows that there is a column called `claim_status`. This is a binary value that indicates whether a video is a claim or an opinion. This will be the target variable. In other words, for each video, the model should predict whether the video is a claim or an opinion.
 
 This is a classification task because the model is predicting a binary class.
 
@@ -978,19 +978,19 @@ Approximately 50.3% of the dataset represents claims and 49.7% represents opinio
 
 **Feature Extraction**
 
-I would extract the length (character count) of each "video_transcription_text" and add this to the dataframe as a new column called "text_length" so that it can be used as a feature in the model.
+I would extract the length (character count) of each `video_transcription_text` and add this to the dataframe as a new column called `text_length` so that it can be used as a feature in the model.
 
 ![TikTok Project](assets/inp_69.png)
 
 ![TikTok Project](assets/out_69.png)
 
-Then, I would calculate the average "text_length" for claims and opinions.
+Then, I would calculate the average `text_length` for claims and opinions.
 
 ![TikTok Project](assets/inp_70.png)
 
 ![TikTok Project](assets/out_70.png)
 
-To visualise the distribution of "text_length" for claims and opinions using a histogram:
+To visualise the distribution of `text_length` for claims and opinions using a histogram:
 
 ![TikTok Project](assets/inp_71.png)
 
@@ -1010,7 +1010,7 @@ Next, I will select and encode target and catgorical variables.
 
 Here, I will assign target variable.
 
-In this case, the target variable is "claim_status".
+In this case, the target variable is `claim_status`.
 
 - 0 represents an opinion
 - 1 represents a claim
@@ -1044,7 +1044,7 @@ And then, confirm that the dimensions of the training, validation, and testing s
 
 ### **Task 6: Tokenise Text Column**
 
-The feature "video_transcription_text" is text-based. It is not a categorical variable, since it does not have a fixed number of possible values. One way to extract numerical features from it is through a bag-of-words algorithm like CountVectorizer.
+The feature `video_transcription_text` is text-based. It is not a categorical variable, since it does not have a fixed number of possible values. One way to extract numerical features from it is through a bag-of-words algorithm like CountVectorizer.
 
 ![TikTok Project](assets/inp_78.png)
 
